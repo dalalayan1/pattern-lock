@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import CircleComponent from './circleComponent';
 import config from '../config.json';
 import '../styles/index.scss';
@@ -11,7 +12,8 @@ export default class mainComponent extends React.Component{
 		this.state = {
 			state: false,
 			patternArray: [],
-			askForConfirmation: false
+			askForConfirmation: false,
+			patternConfirmed: false
 		};
 	}
 
@@ -35,6 +37,11 @@ export default class mainComponent extends React.Component{
 		}
 		else if (askForConfirmation && JSON.stringify(patternArray) === JSON.stringify(patternArrayState)) {
 			savePattern(patternArray);
+			browserHistory.push("patternCheck");
+			this.setState({
+				askForConfirmation: false,
+				patternConfirmed: true
+			});
 		}
 		else if (askForConfirmation && JSON.stringify(patternArray) !== JSON.stringify(patternArrayState)) {
 			this.setState({
@@ -51,7 +58,7 @@ export default class mainComponent extends React.Component{
 
 			});
 		}
-    }
+	}
     handleMouseMove = (e) => {
 		const {
 			target: {
@@ -97,6 +104,9 @@ export default class mainComponent extends React.Component{
 				</div>
 				{
 					this.state.askForConfirmation && <h4 className="confirm-msg">{config.confirmMsg}</h4>
+				}
+				{
+					this.state.patternConfirmed && <a href={config.redirectLink} className="redirect-msg">{config.redirectMsg}</a>
 				}
 				{
 					this.state.error && <h4 className="error-msg">{config.errorMsg}</h4>

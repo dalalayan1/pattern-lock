@@ -6,6 +6,7 @@
 $bg-color: #fafafa;
 $bg-color1: #00a1ff;
 $error-color: red;
+$success-color: green;
 
 *,body {
     margin: 0;
@@ -45,4 +46,7 @@ $error-color: red;
 
 .error-msg {
     color: $error-color;
+}
+.redirect-msg {
+    color: $success-color;
 }

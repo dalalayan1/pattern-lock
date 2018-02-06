@@ -17,7 +17,11 @@ render(
 					<Maincomponent/>
 				</Provider>
 		)} />
-		
+		<Route exact={true} path="/patternCheck" render = {() => (
+				<Provider store={store}>
+					<Maincomponent/>
+				</Provider>
+		)} />
 		</div>
 		</BrowserRouter>
 	,
