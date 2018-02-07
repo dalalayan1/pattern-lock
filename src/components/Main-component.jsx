@@ -14,7 +14,8 @@ export default class mainComponent extends React.Component{
 			state: false,
 			patternArray: [],
 			askForConfirmation: false,
-			patternConfirmed: false
+			patternConfirmed: false,
+			patternMatched: false
 		};
 	}
 
@@ -62,34 +63,67 @@ export default class mainComponent extends React.Component{
 			} = {}
 		} = this;
 
-	if ( patternArray.length < 4 ) {
-		this.setState({
-			error: true,
-			askForConfirmation: false
-		});
+		if ( patternArray.length < 4 ) {
+			this.setState({
+				error: true,
+				askForConfirmation: false
+			});
+		}
+		else if (askForConfirmation && JSON.stringify(patternArray) === JSON.stringify(patternArrayState)) {
+			savePattern(patternArray);
+			this.setState({
+				askForConfirmation: false,
+				patternConfirmed: true
+			});
+		}
+		else if (askForConfirmation && JSON.stringify(patternArray) !== JSON.stringify(patternArrayState)) {
+			this.setState({
+				error: true,
+				askForConfirmation: false
+			});
+		}
+		else {
+			this.setState({
+				error: false,
+				patternArray,
+				askForConfirmation: true
+			});
+		}
+		
+		this.removePatternPaint();
 	}
-	else if (askForConfirmation && JSON.stringify(patternArray) === JSON.stringify(patternArrayState)) {
-		savePattern(patternArray);
-		this.setState({
-			askForConfirmation: false,
-			patternConfirmed: true
-		});
-	}
-	else if (askForConfirmation && JSON.stringify(patternArray) !== JSON.stringify(patternArrayState)) {
-		this.setState({
-			error: true,
-			askForConfirmation: false
-		});
-	}
-	else {
-		this.setState({
-			error: false,
+
+	checkPatternHandler = () => {
+		const {
 			patternArray,
-			askForConfirmation: true
-		});
-	}
-	
-	this.removePatternPaint();
+			props: {
+				patternArray: storedPatternArray
+			} = {}
+		} = this;
+
+		if ( patternArray.length < 4 ) {
+			this.setState({
+				error: true
+			});
+		}
+		else if (JSON.stringify(patternArray) === JSON.stringify(storedPatternArray)) {
+			this.setState({
+				patternMatched: true,
+				error: false
+			});
+		}
+		else if (JSON.stringify(patternArray) !== JSON.stringify(storedPatternArray)) {
+			this.setState({
+				error: true
+			});
+		}
+		else {
+			this.setState({
+				error: false
+			});
+		}
+		
+		this.removePatternPaint();
 	}
 	
 	pushElementToArray = id => {
@@ -113,19 +147,22 @@ export default class mainComponent extends React.Component{
 					instructionMsg: createPatternInstructionMsg,
 					patternArray,
 					confirmMsg,
-					errorMsg,
+					errorMsg: createPatternErrorMsg,
 					redirectLink,
-					redirectMsg
+					redirectMsg,
+					redirectButtonMsg
 				} = {},
 				checkPattern: {
-					instructionMsg: checkPatternInstructionMsg
+					instructionMsg: checkPatternInstructionMsg,
+					errorMsg: checkPatternErrorMsg,
+					patternMatchedMsg
 				} = {}
 			} = config,
 			{ checkPattern } = this.props,
-			{ askForConfirmation, patternConfirmed, error } = this.state;
+			{ askForConfirmation, patternConfirmed, patternMatched, error } = this.state;
 		return(
 			<div className="main-component">
-				<h2 className="instruction-msg">{ checkPattern ? checkPatternInstructionMsg : createPatternInstructionMsg }</h2>
+				<h2 className="instruction-msg">{checkPattern ? checkPatternInstructionMsg : createPatternInstructionMsg}</h2>
 				<div className="pattern-wrapper"
 					onMouseMove={this.handleMouseMove}
 					onMouseUp={this.handleMouseUp}
@@ -141,13 +178,16 @@ export default class mainComponent extends React.Component{
 					askForConfirmation && <h4 className="confirm-msg">{confirmMsg}</h4>
 				}
 				{
-					patternConfirmed && <h4 href={redirectLink} className="redirect-msg">
-														{redirectMsg}
-														<Link to="/checkPattern">Click Here</Link>
-													</h4>
+					patternConfirmed && <h4 className="redirect-msg">
+											{redirectMsg}
+											<Link to="/checkPattern">{redirectButtonMsg}</Link>
+										</h4>
 				}
 				{
-					error && <h4 className="error-msg">{errorMsg}</h4>
+					patternMatched && <h4 className="redirect-msg">{patternMatchedMsg}</h4>
+				}
+				{
+					error && <h4 className="error-msg">{checkPattern ? checkPatternErrorMsg : createPatternErrorMsg}</h4>
 				}
 			</div>
 		);

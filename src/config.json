@@ -2,12 +2,15 @@
     "createPattern": {
         "instructionMsg" : "Connect min. 4 dots to create a lock pattern",
         "patternArray": [1,2,3,4,5,6,7,8,9],
-        "confirmMsg": "Draw the pattern again to confirm",
+        "confirmMsg": "Draw the pattern again to confirm.",
         "errorMsg": "Sorry! Try again",
         "redirectLink": "/patternCheck",
-        "redirectMsg": "Pattern saved successfully! Click here to check your pattern."
+        "redirectMsg": "Pattern saved successfully! Click here to check your pattern.",
+        "redirectButtonMsg": "Click here"
     },
     "checkPattern": {
-        "instructionMsg" : "Draw your lock pattern to unlock"
+        "instructionMsg" : "Draw your lock pattern to unlock",
+        "patternMatchedMsg": "Yaay! Pattern matched!",
+        "errorMsg": "Sorry! Wrong pattern. Try again."
     }
 }
