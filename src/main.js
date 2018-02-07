@@ -14,12 +14,12 @@ render(
 		<div>
 		<Route exact={true} path="/" render = {() => (
 				<Provider store={store}>
-					<CreatePattern/>
+					<CreatePatternContainer/>
 				</Provider>
 		)} />
 		<Route exact={true} path="/checkPattern" render = {() => (
 				<Provider store={store}>
-					<CheckPattern checkPattern={true}/>
+					<CheckPatternContainer checkPattern={true}/>
 				</Provider>
 		)} />
 		</div>

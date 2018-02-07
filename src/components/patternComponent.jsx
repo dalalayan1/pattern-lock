@@ -50,6 +50,7 @@ export default class PatternComponent extends React.Component{
     handleMouseDown = (e) => {
 		this.dragging = true;
 		this.patternArray = [];
+		this.resetPatternPaint();
 	}
 
 	createPatternHandler = () => {
@@ -64,6 +65,7 @@ export default class PatternComponent extends React.Component{
 		} = this;
 
 		if ( patternArray.length < 4 ) {
+			this.addErrorPaint();
 			this.setState({
 				error: true,
 				askForConfirmation: false
@@ -135,10 +137,25 @@ export default class PatternComponent extends React.Component{
 		}
 	}
 
+	addErrorPaint = () => {
+		const circles = document.querySelectorAll('.circle-wrapper.paint-pattern');
+
+		circles.forEach((circle) =>  {
+			circle.classList.remove('paint-pattern');
+			circle.classList.add('paint-error');
+		});
+	} 
+
 	removePatternPaint = () => {
 		const circles = document.querySelectorAll('.circle-wrapper');
 
 		circles.forEach((circle) => circle.classList.remove('paint-pattern'));
+	}
+
+	resetPatternPaint = () => {
+		const circles = document.querySelectorAll('.circle-wrapper');
+
+		circles.forEach((circle) => circle.classList.remove('paint-pattern', 'paint-error'));
 	}
 
 	render() {
