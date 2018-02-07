@@ -14,7 +14,7 @@ var config = {
 	devServer: {
 		inline: true,
 		contentBase:'./',
-		port:3001
+		port:7001
 	},
 	module: {
 		loaders: [
