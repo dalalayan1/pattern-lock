@@ -54,22 +54,24 @@ export default class mainComponent extends React.Component{
 				error: false,
 				patternArray,
 				askForConfirmation: true
-			}, () => {
-
 			});
 		}
+		
+		this.removePatternPaint();
 	}
     handleMouseMove = (e) => {
 		const {
 			target: {
 				dataset: {
 					id
-				} = {}
+				} = {},
+				classList
 			} = {}
 		} = e;
 
 		if(this.dragging && id){
 			this.pushElementToArray(id);
+			classList.add('paint-pattern');
 		}
 		
 	}
@@ -87,7 +89,13 @@ export default class mainComponent extends React.Component{
 		}
 	}
 
-	render(){
+	removePatternPaint = () => {
+		const circles = document.querySelectorAll('.circle-wrapper');
+
+		circles.forEach((circle) => circle.classList.remove('paint-pattern'));
+	}
+
+	render() {
 		return(
 			<div className="main-component">
 				<h2 className="instruction-msg">{config.instructionMsg}</h2>

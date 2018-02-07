@@ -25,7 +25,11 @@ $success-color: green;
     background: $bg-color;
     margin: 40px auto;
 }
-
+.canvas {
+    height: 300px;
+    width: 300px;
+    background: gray;
+}
 .circle-wrapper {
     width: 100px;
     height: 100px;
@@ -43,10 +47,12 @@ $success-color: green;
    -ms-user-select: none;
    user-select: none;
 }
-
 .error-msg {
     color: $error-color;
 }
 .redirect-msg {
     color: $success-color;
+}
+.paint-pattern {
+    background: $success-color;
 }
