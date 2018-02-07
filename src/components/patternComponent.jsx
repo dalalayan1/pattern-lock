@@ -79,6 +79,7 @@ export default class PatternComponent extends React.Component{
 			});
 		}
 		else if (askForConfirmation && JSON.stringify(patternArray) !== JSON.stringify(patternArrayState)) {
+			this.addErrorPaint();
 			this.setState({
 				error: true,
 				askForConfirmation: false
@@ -104,6 +105,7 @@ export default class PatternComponent extends React.Component{
 		} = this;
 
 		if ( patternArray.length < 4 ) {
+			this.addErrorPaint();
 			this.setState({
 				error: true
 			});
@@ -115,6 +117,7 @@ export default class PatternComponent extends React.Component{
 			});
 		}
 		else if (JSON.stringify(patternArray) !== JSON.stringify(storedPatternArray)) {
+			this.addErrorPaint();
 			this.setState({
 				error: true
 			});
@@ -193,19 +196,19 @@ export default class PatternComponent extends React.Component{
 					}
 				</div>
 				{
-					askForConfirmation && <h4 className="confirm-msg">{confirmMsg}</h4>
+					askForConfirmation && <h3 className="confirm-msg">{confirmMsg}</h3>
 				}
 				{
-					patternConfirmed && <h4 className="redirect-msg">
+					patternConfirmed && <h3 className="redirect-msg">
 											{redirectMsg}
 											<Link to="/checkPattern">{redirectButtonMsg}</Link>
-										</h4>
+										</h3>
 				}
 				{
-					patternMatched && <h4 className="redirect-msg">{patternMatchedMsg}</h4>
+					patternMatched && <h3 className="redirect-msg">{patternMatchedMsg}</h3>
 				}
 				{
-					error && <h4 className="error-msg">{checkPattern ? checkPatternErrorMsg : createPatternErrorMsg}</h4>
+					error && <h3 className="error-msg">{checkPattern ? checkPatternErrorMsg : createPatternErrorMsg}</h3>
 				}
 			</div>
 		);

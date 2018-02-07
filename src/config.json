@@ -5,7 +5,7 @@
         "confirmMsg": "Draw the pattern again to confirm.",
         "errorMsg": "Sorry! Try again",
         "redirectLink": "/patternCheck",
-        "redirectMsg": "Pattern saved successfully! Click here to check your pattern.",
+        "redirectMsg": "Pattern saved successfully! Wana check your pattern? ",
         "redirectButtonMsg": "Click here"
     },
     "checkPattern": {
