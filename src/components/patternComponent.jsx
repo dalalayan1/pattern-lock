@@ -128,7 +128,7 @@ export default class PatternComponent extends React.Component{
 			});
 		}
 		
-		this.removePatternPaint();
+		//this.removePatternPaint();
 	}
 	
 	pushElementToArray = id => {

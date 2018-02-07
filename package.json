@@ -1,11 +1,21 @@
 {
   "name": "pattern-lock",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simulation of android pattern unlock in web",
   "scripts": {
     "start": "webpack-dev-server --open --hot --content-base",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalalayan1/pattern-lock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dalalayan1/pattern-lock/issues"
+  },
+  "author": "Ayan Dalal <dalalayan1@gmail.com>",
+  "license": "ISC",
   "dependencies": {
     "react": "*",
     "react-dom": "*",
@@ -30,8 +40,5 @@
     "webpack": "*",
     "webpack-dev-server": "*",
     "webpack-hot-middleware": "*"
-  },
-  "keywords": [],
-  "author": "Ayan Dalal <dalalayan1@gmail.com>",
-  "license": "ISC"
+  }
 }
