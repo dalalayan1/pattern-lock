@@ -1,5 +1,8 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import {
+  Link
+} from 'react-router-dom';
 import CircleComponent from './circleComponent';
 import config from '../config.json';
 import '../styles/index.scss';
@@ -37,7 +40,6 @@ export default class mainComponent extends React.Component{
 		}
 		else if (askForConfirmation && JSON.stringify(patternArray) === JSON.stringify(patternArrayState)) {
 			savePattern(patternArray);
-			browserHistory.push("patternCheck");
 			this.setState({
 				askForConfirmation: false,
 				patternConfirmed: true
@@ -106,7 +108,10 @@ export default class mainComponent extends React.Component{
 					this.state.askForConfirmation && <h4 className="confirm-msg">{config.confirmMsg}</h4>
 				}
 				{
-					this.state.patternConfirmed && <a href={config.redirectLink} className="redirect-msg">{config.redirectMsg}</a>
+					this.state.patternConfirmed && <h4 href={config.redirectLink} className="redirect-msg">
+														{config.redirectMsg}
+														<Link to="/checkPattern">Click Here</Link>
+													</h4>
 				}
 				{
 					this.state.error && <h4 className="error-msg">{config.errorMsg}</h4>

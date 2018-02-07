@@ -1,8 +1,6 @@
 export default function savePattern(patternArray){
-    return function(dispatch){
-            dispatch({
+    return {
                 type:'SAVE_PATTERN',
                 payload: patternArray
-            });
         }
 }

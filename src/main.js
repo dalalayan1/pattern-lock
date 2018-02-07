@@ -11,8 +11,12 @@ render(
 	
 		<BrowserRouter>
 		<div>
-		
 		<Route exact={true} path="/" render = {() => (
+				<Provider store={store}>
+					<Maincomponent/>
+				</Provider>
+		)} />
+		<Route exact={true} path="/checkPattern" render = {() => (
 				<Provider store={store}>
 					<Maincomponent/>
 				</Provider>
