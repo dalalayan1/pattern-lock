@@ -2,20 +2,12 @@ import React, { PropTypes } from 'react';
 
 import '../styles/index.scss';
 
-class CircleComponent extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            isDragging: false
-        }
-    }
+const CircleComponent = ({id}) => {
 
-    render() {
-        return (
-            <div className={`circle-wrapper ${this.props.id}`} data-id={this.props.id} >
-            </div>
-        );
-    }
+    return (
+        <div className={`circle-wrapper ${id}`} data-id={id} >
+        </div>
+    );
 
 };
 
