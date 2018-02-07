@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter,Route } from 'react-router-dom';
  
 import configureStore from './store/configureStore';
-import CreatePattern from './containers/createPattern-container';
-import CheckPattern from './containers/checkPattern-container';
+import CreatePatternContainer from './containers/create-pattern-container';
+import CheckPatternContainer from './containers/check-pattern-container';
 
 const store=configureStore();
 render(

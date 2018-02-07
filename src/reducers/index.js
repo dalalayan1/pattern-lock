@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import mainComponentReducers from './main-component.js';
+import patternComponentReducers from './pattern-component';
 
 const rootReducer = combineReducers({
-    mainComponentReducers
+    patternComponentReducers
 });
 
 export default rootReducer;

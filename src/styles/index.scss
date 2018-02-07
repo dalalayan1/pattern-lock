@@ -31,8 +31,9 @@ $success-color: green;
     background: gray;
 }
 .circle-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
+    margin: 25px;
     background: $bg-color1;
     border-radius: 50px;
     display: inline-block;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CircleComponent from './circleComponent';
 import config from '../config.json';
 import '../styles/index.scss';
-export default class mainComponent extends React.Component{
+export default class PatternComponent extends React.Component{
 
 	constructor(props){
 		super(props);
@@ -160,6 +160,7 @@ export default class mainComponent extends React.Component{
 			} = config,
 			{ checkPattern } = this.props,
 			{ askForConfirmation, patternConfirmed, patternMatched, error } = this.state;
+
 		return(
 			<div className="main-component">
 				<h2 className="instruction-msg">{checkPattern ? checkPatternInstructionMsg : createPatternInstructionMsg}</h2>

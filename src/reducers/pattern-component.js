@@ -1,4 +1,4 @@
-export default function mainComponentReducers(state={
+export default function patternComponentReducers(state={
         patternArray: []
     },action){
     switch (action.type) {
