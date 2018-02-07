@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter,Route,Link } from 'react-router-dom';
+import { BrowserRouter,Route } from 'react-router-dom';
  
 import configureStore from './store/configureStore';
 import Maincomponent from './containers/main-container.js';
