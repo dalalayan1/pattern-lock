@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter,Route } from 'react-router-dom';
  
 import configureStore from './store/configureStore';
-import Maincomponent from './containers/main-container.js';
+import CreatePattern from './containers/createPattern-container';
+import CheckPattern from './containers/checkPattern-container';
 
 const store=configureStore();
 render(
@@ -13,12 +14,12 @@ render(
 		<div>
 		<Route exact={true} path="/" render = {() => (
 				<Provider store={store}>
-					<Maincomponent/>
+					<CreatePattern/>
 				</Provider>
 		)} />
 		<Route exact={true} path="/checkPattern" render = {() => (
 				<Provider store={store}>
-					<Maincomponent/>
+					<CheckPattern checkPattern={true}/>
 				</Provider>
 		)} />
 		</div>

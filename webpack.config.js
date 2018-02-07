@@ -16,6 +16,7 @@ var config = {
 		contentBase:'./',
 		port:7001
 	},
+	devtool: 'source-map',
 	module: {
 		loaders: [
 		{
